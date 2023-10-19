@@ -1,4 +1,5 @@
 # Blake McGahee
+# Change Revision 1 - Removed dropped line on line 14.
 
 def encoder(password):
     result = ''
@@ -10,7 +11,6 @@ def encoder(password):
 
 def decoder(password):
     result = ''
-
     for digit in password:
         new_digit = str((int(digit) - 3) % 10)
         result += new_digit
