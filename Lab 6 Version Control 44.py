@@ -10,7 +10,19 @@ def encoder(password):
     return result
 
 # decoder function
+def decoder(encoded_password):
+    if len(encoded_password) != 8:
+        return "Encoded password must be exactly 8 digits long."
 
+    decoded_password = ""
+    for digit in encoded_password:
+        if digit.isdigit():
+            shifted_digit = (int(digit) - 3) % 10
+            decoded_password += str(shifted_digit)
+        else:
+            return "Encoded password should contain only integers."
+
+    return decoded_password
 
 # define main function
 def main():
@@ -27,7 +39,7 @@ def main():
             value = input("Please enter your password to encode: ")
             print("Your password has been encoded and stored!")
         elif choice == "2":
-            print("The encoded password is " + encoder(value) + ", and the original password is " + value)
+            print("The encoded password is " + encoder(value) + ", and the original password is " + decoder(value)
         elif choice == "3":
             break
         # error catching for invalid selection
